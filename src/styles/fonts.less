@@ -1,0 +1,93 @@
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@font-face {
+    font-family: AvenirLight;
+    src: url(/fonts/Avenir-Light.ttf);
+}
+
+@font-face {
+    font-family: AvenirRoman;
+    src: url(/fonts/Avenir-Roman.ttf);
+}
+
+@font-face {
+    font-family: AvenirMedium;
+    src: url(/fonts/Avenir-Medium.ttf);
+}
+
+@font-face {
+    font-family: AvenirHeavy;
+    src: url(/fonts/Avenir-Heavy.ttf);
+}
+
+
+@font-face {
+    font-family: ProximaNovaRegular;
+    src: url(/fonts/ProximaNova-Regular.otf);
+}
+
+@font-face {
+    font-family: SanFrancisocTextLight;
+    src: url(/fonts/SanFrancisocText-Light.otf);
+}
+
+
+// material font sizing
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+// display 3
+h1 {
+    .sizeFont(2);
+}
+// display 2
+h2 {
+    .sizeFont(1.8);
+}
+// display 1
+h3 {
+    .sizeFont(1.6);
+}
+// header
+h4 {
+    .sizeFont(1.4);
+}
+// title
+h5 {
+    .sizeFont(1.2);
+}
+// button
+h6 {
+    .sizeFont;
+}
+// text
+p, span {
+    .sizeFont;
+}
+
+.bold{
+    font-weight: bold;
+}
+.boldest{
+    font-weight: 900;
+}
+.sizeBold(@size: 300) {
+    font-weight: @size
+}
+.smallFont {
+    .sizeFont(@smallFactor);
+}
+.mediumFont {
+    .sizeFont(@mediumFactor);
+}
+.largeFont {
+    .sizeFont(@largeFactor);
+}
+.sizeFont(@factor: 1) {
+    font-family: SanFrancisocTextLight, sans-serif;
+    font-size: @defaultFontSize * @factor;
+    line-height: @defaultLineHeight * @factor;
+    font-weight: 100;
+}

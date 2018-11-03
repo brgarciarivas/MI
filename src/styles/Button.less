@@ -1,0 +1,35 @@
+.Button {
+    .align-center;
+    .justify-center;
+    .transition(0.2s, all);
+    border-radius: 16px;
+    background-color: @mid-blue;
+    padding: 0 @sm-rem;
+    height: 2.5rem;
+    cursor: pointer;
+    color: white ;
+
+    > * {
+        .smallFont;
+        //background-color: @transparent;
+        border: 0;
+        color: white;
+        text-align: center;
+    }
+    &.disabled {
+        background-color: @gray;
+        color: white;
+        cursor: not-allowed;
+    }
+    &:hover {
+        .card(2);
+    }
+}
+
+@media screen and (min-width: @sm) {
+    .Button{
+        p {
+            .sizeFont(0.7)!important;
+        }
+    }
+}
