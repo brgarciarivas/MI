@@ -242,7 +242,7 @@ class VideoPane extends React.Component {
         return (
             <div>
                 {this.props.isJournalist && <div className='record-button' onClick={() => this.handleRecordClick()}/>}
-                <video autoPlay style={{width: '100%', 'max-height': '100%', 'max-width': '100%'}} ref={videoEl => this.videoEl = videoEl}></video>
+                <video autoPlay style={{width: '100%', 'maxHeight': '100%', 'maxWidth': '100%'}} ref={videoEl => this.videoEl = videoEl}></video>
             </div>
         );
     }
@@ -250,7 +250,7 @@ class VideoPane extends React.Component {
 
 VideoPane.propTypes = {
     isJournalist: PropTypes.bool,
-    roomName: PropTypes.string.required
+    roomName: PropTypes.string,
 }
 
 export default VideoPane = VideoPane;

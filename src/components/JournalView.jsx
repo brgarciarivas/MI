@@ -31,7 +31,8 @@ class JournalView extends Base {
                     <JournalNavigation />
                 </AnimationCon>
                 <Route
-                    path={'/journal/stream'}
+                    exact
+                    path={'/journal/stream/:roomName'}
                     children={props => {
                         return (
                             <AnimationCon
@@ -43,7 +44,7 @@ class JournalView extends Base {
                                     exit: 1000,
                                 }}
                             >
-                                <JournalStream {...props}/>
+                                <JournalStream roomName={props.match.params.roomName} {...props}/>
                             </AnimationCon>
                         )  
                     }}

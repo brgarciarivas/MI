@@ -17,7 +17,7 @@ class Home extends Base {
                     exact 
                     path={'/home'} 
                     render={ 
-                        () => <Redirect to={'/home/dashboard'} /> 
+                        () => <Redirect to={'/home/viewer/9999'} /> 
                     } 
                 />
                 <AnimationCon
@@ -29,26 +29,10 @@ class Home extends Base {
                     <HomeNavBar />
                 </AnimationCon>
                 <Route
-                    path={'/home/dashboard'}
+                    path={'/home/viewer/:roomName'}
+                    exact
                     children={props => {
-                        return (
-                            <AnimationCon
-                                in={this.props.location.pathname.indexOf('dashboard') != -1}
-                                classNames='dashboard'
-                                appear
-                                timeout={{
-                                    enter: 1000,
-                                    exit: 1000,
-                                }}
-                            >
-                                <DashboardPage {...props}/>
-                            </AnimationCon>
-                        )  
-                    }}
-                />
-                <Route
-                    path={'/home/viewer'}
-                    children={props => {
+                        console.log('props', props);
                         return (
                             <AnimationCon
                                 in={this.props.location.pathname.indexOf('viewer') != -1}
@@ -59,7 +43,7 @@ class Home extends Base {
                                     exit: 1000,
                                 }}
                             >
-                                <StreamViewer {...props}/>
+                                <StreamViewer roomName={props.match.params.roomName} {...props}/>
                             </AnimationCon>
                         )  
                     }}

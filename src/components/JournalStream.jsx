@@ -12,7 +12,7 @@ class JournalStream extends Base {
     render() {
         return (
             <div className='JournalStream'>
-                <VideoPane isJournalist={true}/>
+                <VideoPane isJournalist={true} roomName={this.props.roomName}/>
             </div>
         );
     }
