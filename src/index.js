@@ -26,7 +26,6 @@ const logger = createLogger({
     level: 'info',
     collapsed: true
 });
-const sagaMiddleware = createSagaMiddleware()
 
 
 // Create an enhanced history that syncs navigation events with the store

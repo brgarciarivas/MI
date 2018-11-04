@@ -4,7 +4,8 @@ import { Route, IndexRoute, Switch, withRouter, Redirect } from 'react-router-do
 import { ConnectedRouter } from 'connected-react-router'
 
 import Base from './Base';
-
+import AnimationCon from './AnimationCon';
+import LoginPanel from './LoginPanel';
 
 class App extends Base {
     constructor(props) {
@@ -21,7 +22,33 @@ class App extends Base {
 
         return (
             <div className='App'>
-                
+
+              
+                <Route 
+                    exact 
+                    path={'/'} 
+                    render={ 
+                        () => <Redirect to={'/login'} /> 
+                    } 
+                />
+                <Route
+                    path={'/login'}
+                    children={props => {
+                        return (
+                            <AnimationCon
+                                in={this.props.location.pathname.indexOf('login') != -1}
+                                classNames='login'
+                                appear
+                                timeout={{
+                                    enter: 1000,
+                                    exit: 1000,
+                                }}
+                            >
+                                <LoginPanel {...props}/>
+                            </AnimationCon>
+                        )  
+                    }}
+                />
             </div>
         );
     }

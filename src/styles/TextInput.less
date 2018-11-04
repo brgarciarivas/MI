@@ -1,0 +1,98 @@
+.TextInput{
+    position: relative;
+    margin: @md-rem * 1.5 0 @md-rem * 1.5;
+    align-items: flex-start;
+
+    input {
+        .sizePadding(0.75, 0.25);
+        .smallFont;
+        padding-bottom: @default-rem * .5;
+        display:block;
+        width: 100%;
+        border:none;
+        border-bottom: 0.5px solid @dark-gray;
+        box-shadow: unset;
+        color: @light-black;
+        background-color: @light-gray;
+        border-radius: 4px;
+    }
+    input:focus{
+        outline: none;
+    }
+    .main_label{
+        color: @gray;
+        .sizeFont(0.65);
+        position: absolute;
+        pointer-events:none;
+        transition: 0.2s ease all;
+        top: 15px;
+        left: 4px;
+
+        &.disabled{
+            top: @defaultFontSize * -0.5;
+            opacity: 0;
+            color: @primary;
+            left: 0;
+            .sizeFont(0.5);
+        }
+    }
+
+    input:focus ~ .main_label, input:valid ~ .main_label {
+        top: @defaultFontSize * -0.5;
+        color: @primary;
+        left: 0;
+        .sizeFont(0.5);
+       
+    }
+    .bar{
+        display:block;
+        width: 100%;
+    }
+    .error_bar{
+        display: block;
+        z-index: 100;
+    }
+    .error_bar:before, .error_bar:after{
+        background-color: @primary;
+    }
+    .bar:before, .bar:after{
+        background-color: @primary;
+    }
+    .bar:before, .bar:after, .error_bar:before, .error_bar:after {
+        content:'';
+        height:2px; 
+        width:0;
+        bottom:1px; 
+        position:absolute;
+        transition:0.2s ease all; 
+      
+    }
+
+    .bar:before, .error_bar:before{
+        left: 49%;
+    }
+    .bar:after, .error_bar:after {
+        right: 49%; 
+    }
+
+    input:focus ~ .bar:before, 
+    input:focus ~ .bar:after, 
+    input:focus .error_bar:before,
+    input:focus .error_bar:after {
+        width: 49%;
+    }
+    input:valid ~ .bar:before,
+    input:valid ~ .bar:after,
+    input:valid ~ .error_bar:before,
+    input:valid ~ .error_bar:after {
+        width: 49%;
+    }
+
+    .error_label{
+        position: absolute;
+        top: 40px;
+        color: @red;
+        font-size: 12px;
+        pointer-events:none;
+    }
+}

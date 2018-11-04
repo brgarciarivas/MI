@@ -1,0 +1,78 @@
+.LoginPanel {
+    
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    top: -180vh;
+    border-radius: 8px;
+    width: 60vw;
+    height: 60vh;
+    background-color: white;   
+    overflow: hidden;
+    box-shadow: none;
+
+    min-width: 300px;
+    min-height: 400px;
+
+
+    h1{
+        color: @dark-sky-blue;
+    }
+    &.login-enter{
+
+        
+    }
+    &.login-enter-active{
+        top: 0;
+        box-shadow: @boxShadow;
+        transition: top ease .5s,  box-shadow ease .5s 1s;
+    }
+    &.login-enter-done{
+        box-shadow: @boxShadow;
+        transition: top ease .5s, box-shadow ease .5s 1s;
+        top: 0;
+    }
+    &.login-exit{
+        transition: all ease .6s;
+        box-shadow: none;
+    }
+    &.login-exit-active{
+        box-shadow: none;
+        transition: all ease .6s;
+        top: -180vh;
+    }
+    &.login-exit-done{
+        box-shadow: none;
+        transition: all ease .6s;
+        top: -180vh;
+    }
+
+    .form-container{
+        .column;
+        .align-center;
+        .justify-center;
+    }
+    .login-form-con{
+        width: 60%;
+        text-align: left;
+        margin-top: @mdSpace;
+
+        .Button{
+            width: 200px;
+        }
+    }
+
+    .more{
+        height: 100%;
+        width: 200px;
+        background-color: @secondary;
+    }
+}
+
+@media screen and (min-width: @sm) {
+    .LoginPanel {
+        
+    }
+}
