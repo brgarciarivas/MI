@@ -8,7 +8,7 @@ class StreamViewer extends Base {
     render() {
         return (
             <div className='StreamViewer'>
-                <VideoPane isJournalist={true}/>
+                <VideoPane isJournalist={false} roomName={this.props.roomName}/>
             </div>
         );
     }
