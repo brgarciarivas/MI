@@ -75,6 +75,7 @@ class App extends Base {
                 />
                 <Route
                     path={'/journal'}
+                    exact 
                     children={props => {
                         return (
                             <AnimationCon
