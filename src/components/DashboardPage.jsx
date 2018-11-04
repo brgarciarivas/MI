@@ -180,7 +180,6 @@ class DashboardPage extends Base {
                 <div className='reporters-container'>
                     {this.generateColumns()}
                 </div>
-              
             </div>
         );
     }
