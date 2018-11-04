@@ -50,44 +50,6 @@ io.on('connection', function(data) {
 });
 
 
-var dailyChartUpdate = require('./api/modules/chartData').dailyUpdate;
-var dailyGithubUpdate = require('./api/modules/githubData').dailyUpdate;
-var livePriceUpdate = require('./api/modules/chartData').liveUpdate;
-
-var CronJob = require('cron').CronJob;
-
-// var dailyUpdates = new CronJob('00 00 19 * * 0-6', 
-
-
-//     function() {
-//         dailyChartUpdate();
-//         dailyGithubUpdate();
-//     },
-//     function() {
-//         console.log('Cron Job for dailyUpdates done');
-//     },
-//     true,
-//     'America/New_York'
-// );
-
-// var liveUpdate = new CronJob('*/10 * * * * *',
-
-    
-//     function() {
-//         var params = {};
-//         params.io = io;
-//         livePriceUpdate(params);
-//     },
-//     function() {
-//         //
-//     },
-//     true,
-//     'America/New_York'
-// );
-
-//Make Sure CronJob is working 
-// console.log('dailyUpdate cron status', dailyUpdates.running); 
-// console.log('liveUpdate cron status', liveUpdate.running);
 
 
 // Networking Middleware
@@ -100,14 +62,6 @@ var cors = require('cors');
 var whitelist = [
     'http://localhost:8080',
     'http://localhost:3000',
-    'https://setfin.herokuapp.com',
-    'http://setfin.herokuapp.com/',
-    'http://setcoins.com',
-    'https://setcoins.com',
-    'http://www.setcoins.com',
-    'https://www.setcoins.com',
-    'http://setcoins-dev.herokuapp.com/',
-    'https://setcoins-dev.herokuapp.com/'
 ];
 var corsOptions = {
     origin: function(origin, callback) {
@@ -132,30 +86,23 @@ app.use(cookieSession({
     expires: moment().add(120, 'days').toDate()
 }));
 
-// Apple webhook
-var apple = require('./api/handlers/apple');
-app.post('/hook/apple', apple.handleWebHook);
-
-// Stripe webhook
-var stripe = require('./api/handlers/stripe');
-app.post('/hook/stripe/subscription/updated', stripe.handleUpdatedSubscription);
 
 // GraphiQL Docs
-var graphqlHTTP = require('express-graphql');
-var apiSchema = require('./api/schema');
+// var graphqlHTTP = require('express-graphql');
+// var apiSchema = require('./api/schema');
 
-app.use('/api/v/:vid/graph', graphqlHTTP(function(req, res) {
-    return {
-        schema: apiSchema,
-        rootValue: {
-            req: req,
-            res: res,
-            io: io
-        },
-        pretty: true,
-        graphiql: true
-    };
-}));
+// app.use('/api/v/:vid/graph', graphqlHTTP(function(req, res) {
+//     return {
+//         schema: apiSchema,
+//         rootValue: {
+//             req: req,
+//             res: res,
+//             io: io
+//         },
+//         pretty: true,
+//         graphiql: true
+//     };
+// }));
 
 
 server.listen(port, function() {
