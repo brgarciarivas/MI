@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, IndexRoute, Switch, withRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router'
 
 import Base from './Base';
 import AnimationCon from './AnimationCon';
 import LoginPanel from './LoginPanel';
+
+import Home from './Home';
 
 class App extends Base {
     constructor(props) {
@@ -45,6 +47,24 @@ class App extends Base {
                                 }}
                             >
                                 <LoginPanel {...props}/>
+                            </AnimationCon>
+                        )  
+                    }}
+                />
+                <Route
+                    path={'/home'}
+                    children={props => {
+                        return (
+                            <AnimationCon
+                                in={this.props.location.pathname.indexOf('home') != -1}
+                                classNames='main'
+                                appear
+                                timeout={{
+                                    enter: 1000,
+                                    exit: 1000,
+                                }}
+                            >
+                                <Home {...props}/>
                             </AnimationCon>
                         )  
                     }}
