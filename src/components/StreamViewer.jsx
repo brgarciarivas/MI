@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Base from './Base';
+import VideoPane from './VideoPane';
 
 class StreamViewer extends Base {
     render() {
         return (
             <div className='StreamViewer'>
-                <h6>StreamViewer</h6>
+                <VideoPane isJournalist={true}/>
             </div>
         );
     }

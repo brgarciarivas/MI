@@ -1,5 +1,42 @@
 .DashboardPage {
+    position: absolute;
+    top: 150px;    
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    .reporters-container{
+        .row;
+        position: relative;
+        
+        .report-column{
+            
+            margin-right: @smSpace;
+            opacity: 0;
+
+            &.hold-appear{
+                opacity: 0;
+            }
+            &.hold-appear-active{
+                transition: all ease .8s .5s;
+                opacity: 1;
+            }
+            &.hold-enter{
+                opacity: 0;
+            }
+            &.hold-enter-active{
+                transition: all ease .8s .5s;
+                opacity: 1;
+            }
+            &.hold-enter-done{
+                transition: all ease .8s .5s; 
+                opacity: 1;
+            }
+        }
+    }
+
     
+
+
 }
 
 @media screen and (min-width: @sm) {
