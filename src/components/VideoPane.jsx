@@ -13,6 +13,7 @@ class VideoPane extends React.Component {
     componentDidMount() {
         const socket = io();
         const videoEl = this.videoEl;
+        const props = this.props;
 
         let isChannelReady = false;
         let isInitiator = false;
@@ -36,7 +37,8 @@ class VideoPane extends React.Component {
 
         /////////////////////////////////////////////
 
-        const room = 'foo';
+        const room = this.props.roomName;
+        const self = this;
         // Could prompt for room name:
         // room = prompt('Enter room name:');
 
@@ -115,8 +117,11 @@ class VideoPane extends React.Component {
             console.log('>>>>>>> maybeStart() ', isStarted, localStream, isChannelReady);
             if (!isStarted && typeof localStream !== 'undefined' && isChannelReady) {
                 console.log('>>>>>> creating peer connection');
+                console.log('props maybeStart', props);
                 createPeerConnection();
-                pc.addStream(localStream);
+                if (props.isJournalist) {
+                    pc.addStream(localStream);
+                }
                 isStarted = true;
                 console.log('isInitiator', isInitiator);
                 if (isInitiator) {
@@ -161,7 +166,19 @@ class VideoPane extends React.Component {
 
         function doCall() {
             console.log('Sending offer to peer');
-            pc.createOffer(setLocalAndSendMessage, handleCreateOfferError);
+
+            let offerOptions;
+
+            if (props.isJournalist) {
+                console.log('YES Journalist', props);
+                offerOptions = {offerToReceiveVideo: false, offerToReceiveAudio: false};
+            } else {
+                console.log('NOT Journalist', props);
+                offerOptions = {offerToReceiveVideo: true, offerToReceiveAudio: true};
+            }
+
+
+            pc.createOffer(setLocalAndSendMessage, handleCreateOfferError, offerOptions);
         }
 
         function doAnswer() {
@@ -210,25 +227,21 @@ class VideoPane extends React.Component {
             pc = null;
         }
 
-        navigator.mediaDevices.getUserMedia({video: true, audio: true})
-            .then(gotStream);
-        /*
+        this.handleRecordClick = hangup;
+
+
         if (this.props.isJournalist) {
-            //navigator.mediaDevices.getUserMedia({video: { facingMode: "environment"}, audio: true})
             navigator.mediaDevices.getUserMedia({video: true, audio: true})
                 .then(gotStream);
+        } else {
+            gotStream(null);
         }
-        else {
-            createPeerConnection();
-            isStarted = true;
-            doCall();
-        }
-        */
     }
 
     render() {
         return (
             <div>
+                {this.props.isJournalist && <div className='record-button' onClick={() => this.handleRecordClick()}/>}
                 <video autoPlay style={{width: '100%', 'max-height': '100%', 'max-width': '100%'}} ref={videoEl => this.videoEl = videoEl}></video>
             </div>
         );
@@ -237,6 +250,7 @@ class VideoPane extends React.Component {
 
 VideoPane.propTypes = {
     isJournalist: PropTypes.bool,
+    roomName: PropTypes.string.required
 }
 
 export default VideoPane = VideoPane;
