@@ -32,7 +32,7 @@ class App extends Base {
                     exact 
                     path={'/'} 
                     render={ 
-                        () => <Redirect to={'/journal'} /> 
+                        () => <Redirect to={'/home'} /> 
                     } 
                 />
                

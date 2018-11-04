@@ -1,5 +1,61 @@
 .HomeNavBar {
-    
+    width: 90%;
+    .row;
+    .align-center;
+    .justify-space-between;
+   
+    position: absolute;
+    height: 100px;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: @dark-sky-blue;
+    border-bottom-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+    .card(3);
+
+    .avatar{
+        margin-left: @xxlSpace;
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        background-color: white;
+        margin-right: @xxlSpace;
+    }
+    .nav-section{
+        .row;
+        color: white;
+        p{
+            .sizePadding(1);
+        }
+    }
+
+    .searhbar{
+        width: 200px;
+        height: 40%;
+        border-radius: 16px;
+        background-color: @light-gray;
+        margin-right: @xxlSpace;
+    }
+    &.nav-appear{
+        top: -100px;
+    }
+    &.nav-appear-active{
+        top: 0px;
+        transition: all ease .6s;
+    }
+    &.nav-enter{
+        top: -100px;
+    }
+    &.nav-enter-active{
+        top: 0px;
+        transition: all ease .6s;
+    }
+    &.nav-enter-done{
+        top: 0px;
+        transition: all ease .6s;
+    }
 }
 
 @media screen and (min-width: @sm) {

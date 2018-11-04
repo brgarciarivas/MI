@@ -7,7 +7,15 @@ class HomeNavBar extends Base {
     render() {
         return (
             <div className='HomeNavBar'>
-                <h6>HomeNavBar</h6>
+                <div className='row align-center'>
+                    <div className='avatar'/>
+                    <div className='nav-section'>
+                        <p>Dashboard</p>
+                        <p>Profile</p>
+                        <p>Settings</p>
+                    </div>
+                </div>
+                <div className='searhbar' />
             </div>
         );
     }

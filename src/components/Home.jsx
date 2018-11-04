@@ -11,17 +11,7 @@ class Home extends Base {
     render() {
         return (
             <div className='Home'>
-                <AnimationCon
-                    in={this.props.location.pathname.indexOf('dashboard') != -1}
-                    classNames='dashboard'
-                    appear
-                    timeout={{
-                        enter: 1000,
-                        exit: 1000,
-                    }}
-                >
-                    <DashboardPage {...props}/>
-                </AnimationCon>
+                
                 <Route 
                     exact 
                     path={'/home'} 
@@ -29,6 +19,14 @@ class Home extends Base {
                         () => <Redirect to={'/home/dashboard'} /> 
                     } 
                 />
+                <AnimationCon
+                    in
+                    classNames='nav'
+                    appear
+                    timeout={800}
+                >
+                    <HomeNavBar />
+                </AnimationCon>
                 <Route
                     path={'/home/dashboard'}
                     children={props => {
