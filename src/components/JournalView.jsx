@@ -7,6 +7,8 @@ import JournalSetting from './JournalSetting';
 import JournalStream from './JournalStream';
 import JournalProfile from './JournalProfile';
 import AnimationCon from './AnimationCon';
+import JournalNavigation from './JournalNavigation';
+
 
 class JournalView extends Base {
     render() {
@@ -20,6 +22,14 @@ class JournalView extends Base {
                     } 
                 />
 
+                <AnimationCon
+                    in
+                    classNames='profileNav'
+                    appear
+                    timeout={800}
+                >
+                    <JournalNavigation />
+                </AnimationCon>
                 <Route
                     path={'/journal/stream'}
                     children={props => {
@@ -56,7 +66,7 @@ class JournalView extends Base {
                         )  
                     }}
                 />
-                
+
             </div>
            
         );

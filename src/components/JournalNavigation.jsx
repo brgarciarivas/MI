@@ -7,7 +7,7 @@ class JournalNavigation extends Base {
     render() {
         return (
             <div className='JournalNavigation'>
-                <h6>JournalNavigation</h6>
+               
             </div>
         );
     }

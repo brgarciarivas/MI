@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
 
 import Base from './Base';
 
 class JournalStream extends Base {
     handleRecordClick = () => {
         console.log('handleRecordClick');
-        
+
     }
     render() {
         return (
@@ -14,9 +15,8 @@ class JournalStream extends Base {
                 <div 
                     className='record-button'
                     onClick={() => this.handleRecordClick()}
-                >
+                />
 
-                </div>
             </div>
         );
     }

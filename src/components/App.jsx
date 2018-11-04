@@ -35,14 +35,7 @@ class App extends Base {
                         () => <Redirect to={'/journal'} /> 
                     } 
                 />
-                <AnimationCon
-                    in
-                    classNames='profileNav'
-                    appear
-                    timeout={800}
-                >
-                    <JournalNavigation />
-                </AnimationCon>
+               
                 <Route
                     path={'/login'}
                     children={props => {
