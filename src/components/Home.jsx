@@ -6,6 +6,7 @@ import Base from './Base';
 import AnimationCon from './AnimationCon';
 import DashboardPage from './DashboardPage';
 import HomeNavBar from './HomeNavBar';
+import StreamViewer from './StreamViewer';
 
 class Home extends Base {
     render() {
@@ -41,6 +42,24 @@ class Home extends Base {
                                 }}
                             >
                                 <DashboardPage {...props}/>
+                            </AnimationCon>
+                        )  
+                    }}
+                />
+                <Route
+                    path={'/home/viewer'}
+                    children={props => {
+                        return (
+                            <AnimationCon
+                                in={this.props.location.pathname.indexOf('viewer') != -1}
+                                classNames='viewer'
+                                appear
+                                timeout={{
+                                    enter: 1000,
+                                    exit: 1000,
+                                }}
+                            >
+                                <StreamViewer {...props}/>
                             </AnimationCon>
                         )  
                     }}
