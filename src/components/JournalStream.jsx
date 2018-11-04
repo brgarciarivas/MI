@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import io from 'socket.io-client';
 
 import Base from './Base';
+import VideoPane from './VideoPane';
 
 class JournalStream extends Base {
     handleRecordClick = () => {
         console.log('handleRecordClick');
-
     }
     render() {
         return (
             <div className='JournalStream'>
+                <VideoPane isJournalist={true}/>
                 <div 
                     className='record-button'
                     onClick={() => this.handleRecordClick()}
