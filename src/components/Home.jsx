@@ -5,14 +5,26 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Base from './Base';
 import AnimationCon from './AnimationCon';
 import DashboardPage from './DashboardPage';
+import HomeNavBar from './HomeNavBar';
 
 class Home extends Base {
     render() {
         return (
             <div className='Home'>
+                <AnimationCon
+                    in={this.props.location.pathname.indexOf('dashboard') != -1}
+                    classNames='dashboard'
+                    appear
+                    timeout={{
+                        enter: 1000,
+                        exit: 1000,
+                    }}
+                >
+                    <DashboardPage {...props}/>
+                </AnimationCon>
                 <Route 
                     exact 
-                    path={'/'} 
+                    path={'/home'} 
                     render={ 
                         () => <Redirect to={'/home/dashboard'} /> 
                     } 

@@ -6,6 +6,8 @@ import { ConnectedRouter } from 'connected-react-router'
 import Base from './Base';
 import AnimationCon from './AnimationCon';
 import LoginPanel from './LoginPanel';
+import JournalView from './JournalView';
+import JournalNavigation from './JournalNavigation';
 
 import Home from './Home';
 
@@ -30,9 +32,17 @@ class App extends Base {
                     exact 
                     path={'/'} 
                     render={ 
-                        () => <Redirect to={'/login'} /> 
+                        () => <Redirect to={'/journal'} /> 
                     } 
                 />
+                <AnimationCon
+                    in
+                    classNames='profileNav'
+                    appear
+                    timeout={800}
+                >
+                    <JournalNavigation />
+                </AnimationCon>
                 <Route
                     path={'/login'}
                     children={props => {
@@ -51,6 +61,7 @@ class App extends Base {
                         )  
                     }}
                 />
+                
                 <Route
                     path={'/home'}
                     children={props => {
@@ -65,6 +76,24 @@ class App extends Base {
                                 }}
                             >
                                 <Home {...props}/>
+                            </AnimationCon>
+                        )  
+                    }}
+                />
+                <Route
+                    path={'/journal'}
+                    children={props => {
+                        return (
+                            <AnimationCon
+                                in={this.props.location.pathname.indexOf('journal') != -1}
+                                classNames='journal'
+                                appear
+                                timeout={{
+                                    enter: 1000,
+                                    exit: 1000,
+                                }}
+                            >
+                                <JournalView {...props}/>
                             </AnimationCon>
                         )  
                     }}
