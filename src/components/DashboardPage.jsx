@@ -9,7 +9,7 @@ class DashboardPage extends Base {
         return (
             <div className='DashboardPage'>
                 <h6>DashboardPage</h6>
-                <VideoPane isJournalist={true}/>
+                <VideoPane isJournalist={false}/>
             </div>
         );
     }

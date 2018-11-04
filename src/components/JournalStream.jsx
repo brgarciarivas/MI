@@ -13,11 +13,6 @@ class JournalStream extends Base {
         return (
             <div className='JournalStream'>
                 <VideoPane isJournalist={true}/>
-                <div 
-                    className='record-button'
-                    onClick={() => this.handleRecordClick()}
-                />
-
             </div>
         );
     }
